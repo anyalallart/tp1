@@ -4,6 +4,5 @@
 
 int main(){
     printf("Hello World\n");
-    //coucou
     return EXIT_SUCCESS;
 }
