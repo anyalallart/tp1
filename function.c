@@ -52,7 +52,7 @@ int fact_rec(int f){
 
 void pendu(char mot[]){
     int ok = 0;
-    int nb = (int)(sizeof(mot)/sizeof(char));
+    int nb = (int)strlen(mot);
     int t = 0; //lettres trouvés
     char l; //letter
     char v[nb];
@@ -61,17 +61,68 @@ void pendu(char mot[]){
     }
 
     while(!ok){
+        printf("\n");
+        for (int k = 0; k <nb; k++){
+            printf("%c", v[k]);
+        }
         printf("\nEnter a letter: ");
-        scanf("%c", &l);
+        scanf(" h%c", &l);
         for (int j = 0; j <nb; j++){
             if (l == mot[j]){
                 v[j] = l;
                 t++;
             }
         }
-        for (int k = 0; k <nb; k++){
-            printf("%c", v[k]);
-        }
+
         if (nb == t) ok = 1;
+    }
+}
+
+void tab_alea (int n){
+    int tab[n];
+    for (int i = 0; i < n; i++){
+        tab[i] = (int)rand() % 100;
+    }
+    int temp;
+    for(int k=0;k<n;k++){
+        for(int j=1;j<n;j++){
+            if(tab[j-1]>tab[j]){
+                temp=tab[j-1];
+                tab[j-1]=tab[j];
+                tab[j]=temp;
+            }
+        }
+    }
+    for (int i = 0; i < n; i++){
+        printf("\n%d", tab[i]);
+    }
+}
+
+void tab2_alea(int n){
+    int tab[n][n];
+    for (int i = 0; i < n; i++){
+        for(int j=0; j < n; j++){
+            tab[i][j] = (int)rand() % 100;
+        }
+    }
+    int temp;
+    for(int i=0;i<n;++i ){
+        for(int k=0;k<n;k++){
+            for(int j=1;j<n;j++){
+                if(tab[j-1][i]>tab[j][i]){
+                    temp=tab[j-1][i];
+                    tab[j-1][i]=tab[j][i];
+                    tab[j][i]=temp;
+                }
+            }
+        }
+
+
+    }
+    for (int i = 0; i < n; i++){
+        for(int j=0; j < n; j++){
+            printf("%d ", tab[i][j]);
+        }
+        printf("\n");
     }
 }
